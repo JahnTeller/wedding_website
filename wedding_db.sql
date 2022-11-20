@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2022 at 09:59 AM
+-- Generation Time: Nov 20, 2022 at 11:47 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.3.33
 
@@ -152,14 +152,27 @@ INSERT INTO `items` (`itemId`, `item_name`, `image`, `categoryId`, `price`) VALU
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `orderitems`
+--
+
+CREATE TABLE `orderitems` (
+  `itemId` int(6) NOT NULL,
+  `orderId` int(6) NOT NULL,
+  `quantity` int(11) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `orders`
 --
 
 CREATE TABLE `orders` (
   `orderId` int(11) NOT NULL,
-  `cartId` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
   `total_cost` int(12) NOT NULL,
-  `payment_methods` varchar(255) NOT NULL
+  `payment_methods` varchar(255) NOT NULL,
+  `note` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
